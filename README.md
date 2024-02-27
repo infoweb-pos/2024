@@ -8,9 +8,11 @@
 ## Calendário
 
 | Data | Nota |
+| --- | --- |
 | 19/02 | Sem aula presencial. Reposição será material de apoio. |
 | 20/02 | Sem aula presencial. Reposição será material de apoio. |
 | 26/02 | Apresentação da disciplina |
-| 27/02 | Publicando HTML + CSS + JS no Vercel |
-| 04/03 | Anatomia de projetos JS. |
+| 27/02 | [Publicando HTML + CSS + JS no Vercel](https://github.com/infoweb-pos/2024-vercel) |
+| 04/03 | [Anatomia de projetos JS e Templates CSS](https://github.com/infoweb-pos/2024-css-templates) |
 | 05/03 | ... |
+
