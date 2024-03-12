@@ -14,6 +14,7 @@
 | 26/02 | Apresentação da disciplina |
 | 27/02 | Sem aula presencial. Reposição será material de apoio. |
 | 04/03 | [Publicando HTML + CSS + JS no Vercel](https://github.com/infoweb-pos/2024-vercel) |
-| 05/03 | [Typescript](https://github.com/infoweb-pos/2024-typescript) |
-| ??/03 | ... |
+| 05/03 | continuação |
+| 11/03 | [Typescript](https://github.com/infoweb-pos/2024-typescript) |
+| 12/03 | [React - introdução](https://github.com/infoweb-pos/2024-react) |
 
