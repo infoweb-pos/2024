@@ -17,4 +17,8 @@
 | 05/03 | continuação |
 | 11/03 | [Typescript](https://github.com/infoweb-pos/2024-typescript) |
 | 12/03 | [React - introdução](https://github.com/infoweb-pos/2024-react) |
+| 18/03 | [React - introdução](https://github.com/infoweb-pos/2024-react) |
+| 19/03 | [React - introdução](https://github.com/infoweb-pos/2024-react) |
+| 25/03 | -- |
+| 26/03 |  -- |
 
