@@ -19,6 +19,6 @@
 | 12/03 | [React - introdução](https://github.com/infoweb-pos/2024-react) |
 | 18/03 | [React - introdução](https://github.com/infoweb-pos/2024-react) |
 | 19/03 | [React - introdução](https://github.com/infoweb-pos/2024-react) |
-| 25/03 | -- |
+| 25/03 | [Consumindo API](https://github.com/infoweb-pos/2024-axios) |
 | 26/03 |  -- |
 
