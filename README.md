@@ -33,4 +33,4 @@
 | 23/07 | OBT 2024 |
 | 27/07 | (sábado) OBT 2024 |
 | 29/07 | [Revisão de conteúdo](https://github.com/infoweb-pos/tictactoy-2024/tree/master) |
-| 02/08 | Revisão de conteúdo |
+| 02/08 | [Revisão de conteúdo](./revisao-pos-greve.md) |
