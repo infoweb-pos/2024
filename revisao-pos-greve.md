@@ -1,7 +1,7 @@
 # Revisão do React pó greve
 
 ## Aula de 02/08/2024
-Segunda parte do tutorial [Quick start - React](https://react.dev/learn)
+Segunda parte do tutorial [TicTacToe - React](https://react.dev/learn/tutorial-tic-tac-toe))
 
 ```bash
 git clone https://github.com/infoweb-pos/tictactoy-2024.git
