@@ -1,4 +1,4 @@
-# Revisão do React pó greve
+# Revisão do React pós greve
 
 ## Aula de 02/08/2024
 Segunda parte do tutorial [TicTacToe - React](https://react.dev/learn/tutorial-tic-tac-toe))
