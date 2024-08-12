@@ -2,6 +2,8 @@
 
 ## Links
 
+- Repositório de códido da aula
+  - [2024-nest](https://github.com/infoweb-pos/2024-nest)
 - Tutoriais
   - [Criando o primeiro CRUD com NestJS](https://www.treinaweb.com.br/blog/criando-o-primeiro-crud-com-nestjs)
   - [Nest - Documentation](https://docs.nestjs.com/)
@@ -14,3 +16,15 @@
   - Rest client - HTTP Client
     - [Postman](https://www.postman.com/product/rest-client/)
     - 
+
+## Passos
+
+```bash
+## Instalar o nestjs
+npm i -g @nestjs/cli
+
+## Criar novo projeto nest
+nest new 2024-nest-introducao
+cd 2024-nest-introducao
+
+## instalar a biblioteca do sqlite3
