@@ -36,3 +36,10 @@ npx prisma init --datasource-provider sqlite
 
 npx prisma studio
 ```
+
+```bash
+npx prisma migrate dev --create-only --name adicionado_titutlo_trabalho
+
+```
+
+
