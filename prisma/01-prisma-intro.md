@@ -1,6 +1,7 @@
 # Introdução a Prisma ORM
 
 ## Link
+- [Repositório de código](https://github.com/infoweb-pos/2024-prisma)
 - tutoriais
   - [getting started](https://www.prisma.io/docs/getting-started/quickstart)
   - [Building a REST API with NestJS and Prisma](https://www.prisma.io/blog/nestjs-prisma-rest-api-7D056s1BmOL0)
