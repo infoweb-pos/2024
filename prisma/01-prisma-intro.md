@@ -13,6 +13,8 @@
 - Apresentar o ORM Prisma
 
 ## Códigos e comandos da aula
+
+### Introdução ao Prisma
 ```bash
 ## baixar o repositório de código
 git clone https://github.com/infoweb-pos/2024-prisma.git
@@ -37,9 +39,11 @@ npx prisma init --datasource-provider sqlite
 npx prisma studio
 ```
 
+### Migrate do Prisma ORM
 ```bash
 npx prisma migrate dev --create-only --name adicionado_titutlo_trabalho
 
+npx prisma studio
 ```
 
 
