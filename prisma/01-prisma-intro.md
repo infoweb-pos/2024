@@ -4,6 +4,7 @@
 - [Repositório de código](https://github.com/infoweb-pos/2024-prisma)
 - tutoriais
   - [getting started](https://www.prisma.io/docs/getting-started/quickstart)
+  - [migrate - getting start](https://www.prisma.io/docs/orm/prisma-migrate/getting-started)
   - [Building a REST API with NestJS and Prisma](https://www.prisma.io/blog/nestjs-prisma-rest-api-7D056s1BmOL0)
 - ferramentas
   - [prisma orm](https://www.prisma.io/)
@@ -32,4 +33,6 @@ npx tsc --init
 npm install prisma --save-dev
 
 npx prisma init --datasource-provider sqlite
+
+npx prisma studio
 ```
