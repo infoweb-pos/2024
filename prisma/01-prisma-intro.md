@@ -1,5 +1,7 @@
 # Introdução a Prisma ORM
 
+[vídeo da aula](https://youtu.be/-JvDDYCEZX0)
+
 ## Link
 - [Repositório de código](https://github.com/infoweb-pos/2024-prisma)
 - tutoriais
