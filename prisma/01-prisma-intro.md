@@ -9,3 +9,23 @@
 
 ## Objetivos
 - Apresentar o ORM Prisma
+
+## Códigos e comandos da aula
+```bash
+## baixar o repositório de código
+git clone https://github.com/infoweb-pos/2024-prisma.git
+
+## acessar a pasta do código
+cd 2024-prisma/
+
+## iniciar um projeto js
+npm init -y
+
+## colocar como será interpretado o ts e
+## como fazer o traspiling de ts para js
+npx tsc --init
+
+npm install prisma --save-dev
+
+npx prisma init --datasource-provider sqlite
+```
