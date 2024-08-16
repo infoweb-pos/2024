@@ -22,6 +22,9 @@ cd 2024-prisma/
 ## iniciar um projeto js
 npm init -y
 
+## instala o typescript
+npm install typescript ts-node @types/node --save-dev
+
 ## colocar como será interpretado o ts e
 ## como fazer o traspiling de ts para js
 npx tsc --init
