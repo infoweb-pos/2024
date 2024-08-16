@@ -37,3 +37,4 @@
 | 05/08 | [Revisão de React](./revisao-pos-greve.md) |
 | 09/08 | [Revisão de Consumir API](./revisao-pos-greve-consumir-api.md) |
 | 12/08 | [Introdução a Nest](./nest/01-intro.md) |
+| 16/08 | [Introdução ao prisma orm](./prisma/01-prisma-intro.md) |
