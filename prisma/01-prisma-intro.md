@@ -2,6 +2,8 @@
 
 [vídeo da aula](https://youtu.be/-JvDDYCEZX0)
 
+
+
 ## 1. Link
 - [Repositório de código](https://github.com/infoweb-pos/2024-prisma)
 - tutoriais
@@ -12,10 +14,16 @@
   - [prisma orm](https://www.prisma.io/)
   - [extensão do vs code](https://marketplace.visualstudio.com/items?itemName=Prisma.prisma)
 
+
+
 ## 2. Objetivos
 - Apresentar o ORM Prisma
 
+
+
 ## 3. Códigos e comandos da aula
+
+
 
 ### 3.1. Introdução ao Prisma
 ```bash
@@ -59,13 +67,191 @@ npx prisma studio
 ```
 [arquivos finais podem ser visualizados no branch 01-introducao](https://github.com/infoweb-pos/2024-prisma/tree/01-introducao/)
 
-### 3.2 Migrate do Prisma ORM
 
-**em desenvolvimento**
+
+### 3.2 Migrate do Prisma ORM - Adicionando campos
+
+**3.2.1** Modifica o arquivo de configuração/inicialização do prisma `prisma/schema.prisma`
+```prisma
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int     @id @default(autoincrement())
+  email     String  @unique
+  name      String?
+  nickname  String  @unique
+  passwword String  @default("321")
+  posts     Post[]
+}
+
+model Post {
+  id        Int     @id @default(autoincrement())
+  title     String
+  content   String?
+  published Boolean @default(false)
+  author    User    @relation(fields: [authorId], references: [id])
+  authorId  Int
+}
+
+```
+
+**3.2.2** Executa o `migrate dev` para somente criar o script SQL
 ```bash
-npx prisma migrate dev --create-only --name adicionado_titutlo_trabalho
+npx prisma migrate dev --create-only --name adicionado_apelido_senha
 
-npx prisma studio
+```
+
+**3.2.3** Edita script SQL de migração `prisma/migrations/2024??????????_adicionado_apelido_senha/migration.sql`
+
+```diff
+--/*
+--  Warnings:
+--
+--  - Added the required column `nickname` to the `User` table without a default value. This is not possible if the table is ---not empty.
+--
+--*/
+-- RedefineTables
+PRAGMA defer_foreign_keys=ON;
+PRAGMA foreign_keys=OFF;
+CREATE TABLE "new_User" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "email" TEXT NOT NULL,
+    "name" TEXT,
+    "nickname" TEXT NOT NULL,
+    "passwword" TEXT NOT NULL DEFAULT '321'
+);
+--INSERT INTO "new_User" ("email", "id", "name") SELECT "email", "id", "name" FROM "User";
+++INSERT INTO "new_User" ("email", "id", "name", "nickname") SELECT "email", "id", "name", "email" as "nickname" FROM "User";
+DROP TABLE "User";
+ALTER TABLE "new_User" RENAME TO "User";
+CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
+CREATE UNIQUE INDEX "User_nickname_key" ON "User"("nickname");
+PRAGMA foreign_keys=ON;
+PRAGMA defer_foreign_keys=OFF;
+
+```
+
+**3.2.4** Executa o `migrate dev` para aplicar modificações no banco de dados
+```bash
+npx prisma migrate dev
+
 ```
 
 
+
+### 3.3 Migrate do Prisma ORM - Adicionando novos modelos
+
+**3.3.1** Modifica o arquivo de configuração/inicialização do prisma `prisma/schema.prisma`
+```diff
+--// This is your Prisma schema file,
+--// learn more about it in the docs: https://pris.ly/d/prisma-schema
+--
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  name      String?
+  nickname  String   @unique
+  passwword String   @default("321")
+  posts     Post[]
+++  profile   Profile?
+}
+
+model Post {
+  id        Int     @id @default(autoincrement())
+  title     String
+  content   String?
+  published Boolean @default(false)
+  author    User    @relation(fields: [authorId], references: [id])
+  authorId  Int
+}
+++
+++model Profile {
+++  id     Int     @id @default(autoincrement())
+++  bio    String?
+++  user   User    @relation(fields: [userId], references: [id])
+++  userId Int     @unique
+++}
+
+```
+
+**3.3.2** Executa o `migrate dev` para criar o script SQL e aplicar no banco de dados
+```bash
+npx prisma migrate dev --name adicionado_profile
+
+```
+
+
+
+### 3.4 Migrate do Prisma ORM - Modifificando nomes de tabelas
+
+**3.4.1** Modifica o arquivo de configuração/inicialização do prisma `prisma/schema.prisma`
+```diff
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  name      String?
+  nickname  String   @unique
+  passwword String   @default("321")
+  posts     Post[]
+  profile   Profile?
+++
+++  @@maps("users")
+}
+
+model Post {
+  id        Int     @id @default(autoincrement())
+  title     String
+  content   String?
+  published Boolean @default(false)
+  author    User    @relation(fields: [authorId], references: [id])
+  authorId  Int
+++
+++  @@maps("posts")
+}
+
+model Profile {
+  id     Int     @id @default(autoincrement())
+  bio    String?
+  user   User    @relation(fields: [userId], references: [id])
+  userId Int     @unique
+++
+++  @@maps("profiles")
+}
+
+```
+
+**3.4.2** Executa o `migrate dev` para somente criar o script SQL
+```bash
+npx prisma migrate dev --create-only --name adicionado_profile
+
+```
+
+**continua...**
