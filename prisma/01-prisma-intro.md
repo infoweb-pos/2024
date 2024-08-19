@@ -72,6 +72,7 @@ npx prisma studio
 ### 3.2 Migrate do Prisma ORM - Adicionando campos
 
 **3.2.1** Modifica o arquivo de configuração/inicialização do prisma `prisma/schema.prisma`
+[código no branch 02-migrate-adicionar-atributos](https://github.com/infoweb-pos/2024-prisma/tree/02-migrate-adicionar-atributos)
 ```prisma
 // This is your Prisma schema file,
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
@@ -150,6 +151,7 @@ npx prisma migrate dev
 
 
 ### 3.3 Migrate do Prisma ORM - Adicionando novos modelos
+[código no branch 03-migrate-tabelas-incluir](https://github.com/infoweb-pos/2024-prisma/tree/03-migrate-tabelas-incluir)
 
 **3.3.1** Modifica o arquivo de configuração/inicialização do prisma `prisma/schema.prisma`
 ```diff
@@ -223,7 +225,7 @@ model User {
   posts     Post[]
   profile   Profile?
 ++
-++  @@maps("users")
+++  @@map("users")
 }
 
 model Post {
@@ -234,7 +236,7 @@ model Post {
   author    User    @relation(fields: [authorId], references: [id])
   authorId  Int
 ++
-++  @@maps("posts")
+++  @@map("posts")
 }
 
 model Profile {
@@ -243,15 +245,40 @@ model Profile {
   user   User    @relation(fields: [userId], references: [id])
   userId Int     @unique
 ++
-++  @@maps("profiles")
+++  @@map("profiles")
 }
 
 ```
 
 **3.4.2** Executa o `migrate dev` para somente criar o script SQL
 ```bash
-npx prisma migrate dev --create-only --name adicionado_profile
+npx prisma migrate dev --create-only --name tabelas_renomeadas
 
 ```
 
-**continua...**
+**3.4.3** Edita script SQL de migração `prisma/migrations/2024??????????_tabelas_renomeadas/migration.sql`
+
+```prisma
+-- CreateTable
+PRAGMA foreign_keys=off;
+ALTER TABLE "User" RENAME TO "users";
+ALTER TABLE "Post" RENAME TO "posts";
+ALTER TABLE "Profile" RENAME TO "profiles";
+
+-- CreateIndex
+CREATE UNIQUE INDEX "users_email_key" ON "users"("email");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "users_nickname_key" ON "users"("nickname");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "profiles_userId_key" ON "profiles"("userId");
+
+PRAGMA foreign_keys=on;
+```
+
+**3.4.4** Executa o `migrate dev` para aplicar modificações no banco de dados
+```bash
+npx prisma migrate dev
+
+```
