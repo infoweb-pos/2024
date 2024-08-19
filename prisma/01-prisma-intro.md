@@ -25,6 +25,10 @@
 
 
 ### 3.1. Introdução ao Prisma
+
+[arquivos finais podem ser visualizados no branch 01-introducao](https://github.com/infoweb-pos/2024-prisma/tree/01-introducao/)
+
+**3.1.1.** Inicializando o projeto com a linha de comando
 ```bash
 ## baixar o repositório de código
 git clone https://github.com/infoweb-pos/2024-prisma.git
@@ -53,18 +57,124 @@ npm install prisma --save-dev
 ## cria o arquivo /prisma/schema.prisma e o /.env
 npx prisma init --datasource-provider sqlite
 
+## Abrir o VS Code com a pasta do projeto
+## Nos labs do IFRN-CNAT o comando pode ser
+## vscode .
+code .
+```
+
+**3.1.2** Edite o arquivo de schema do prisma `prisma/schema.prisma` para adicionar os modelos
+
+```prisma
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id    Int     @id @default(autoincrement())
+  email String  @unique
+  name  String?
+  posts Post[]
+}
+
+model Post {
+  id        Int     @id @default(autoincrement())
+  title     String
+  content   String?
+  published Boolean @default(false)
+  author    User    @relation(fields: [authorId], references: [id])
+  authorId  Int
+}
+
+```
+
+**3.1.3** Execute a migração nomeando como `introducao`
+
+```bash
 ## cria uma migração e gera código cliente para o prisma
 ## cria o arquivo /prisma/migrations e /prisma/dev.db
 npx prisma migrate dev --name introducao
 
+```
+
+**3.1.4** Crie, edite e execute o acesso ao dados
+
+arquivo `src/script.ts`
+
+```ts
+import { PrismaClient } from "@prisma/client";
+
+const prisma = new PrismaClient();
+
+async function main() {
+	// ... you will write your Prisma Client queries here
+	let user = await prisma.user.create({
+		data: {
+			name: "Alice",
+			email: "alice@prisma.io",
+		},
+	});
+	console.log(user);
+	user = await prisma.user.create({
+		data: {
+			name: "Bob",
+			email: "bob@prisma.io",
+			posts: {
+				create: [
+					{
+						title: "Hello World",
+						published: true,
+					},
+					{
+						title: "My second post",
+						content: "This is still a draft",
+					},
+				],
+			},
+		},
+	});
+	console.log(user);
+
+	const users = await prisma.user.findMany();
+	console.log(users);
+}
+
+main()
+	.then(async () => {
+		await prisma.$disconnect();
+	})
+	.catch(async (e) => {
+		console.error(e);
+		await prisma.$disconnect();
+		process.exit(1);
+	});
+
+```
+
+executar no terminal
+
+```bash
 ## executa arquivo src/script.ts com o ts-node
 ## cria objetos em memória e persiste no banco de dados /prisma/dev.db
 npx ts-node src/script.ts
 
+```
+
+**3.1.5** Visualize os dados numa interface web
+
+```bash
 ## executa um cliente de acesso a dados na url http://localhost:5555/
 npx prisma studio
+
 ```
-[arquivos finais podem ser visualizados no branch 01-introducao](https://github.com/infoweb-pos/2024-prisma/tree/01-introducao/)
 
 
 
