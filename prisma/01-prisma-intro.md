@@ -20,7 +20,9 @@
 
 
 
+
 ## 3. Códigos e comandos da aula
+
 
 
 
@@ -178,10 +180,13 @@ npx prisma studio
 
 
 
+
 ### 3.2 Migrate do Prisma ORM - Adicionando campos
 
-**3.2.1** Modifica o arquivo de configuração/inicialização do prisma `prisma/schema.prisma`
 [código no branch 02-migrate-adicionar-atributos](https://github.com/infoweb-pos/2024-prisma/tree/02-migrate-adicionar-atributos)
+
+**3.2.1** Modifica o arquivo de configuração/inicialização do prisma `prisma/schema.prisma`
+
 ```prisma
 // This is your Prisma schema file,
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
@@ -260,6 +265,7 @@ npx prisma migrate dev
 
 
 ### 3.3 Migrate do Prisma ORM - Adicionando novos modelos
+
 [código no branch 03-migrate-tabelas-incluir](https://github.com/infoweb-pos/2024-prisma/tree/03-migrate-tabelas-incluir)
 
 **3.3.1** Modifica o arquivo de configuração/inicialização do prisma `prisma/schema.prisma`
@@ -392,4 +398,90 @@ PRAGMA foreign_keys=on;
 ```bash
 npx prisma migrate dev
 
+```
+
+
+
+### 3.5. Mudando para postgresql e fazendo hosting no vercel
+
+[código da aula no branc 05-postgres-hosting](https://github.com/infoweb-pos/2024-prisma/tree/05-postgres-hosting)
+
+**3.5.1** Crie um _storage_ postgresql no Vercel
+
+**3.5.2** Renomeie a pasta `prisma/migrations` para `prisma/sqlite`
+
+**3.5.3** Modifique o `provider` no arquivo `prisma/schema.prisma`
+
+```diff
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+--  provider = "sqlite"
+++  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  name      String?
+  nickname  String   @unique
+  passwword String   @default("321")
+  email2    String?
+  posts     Post[]
+  profile   Profile?
+
+  @@map("usuarios")
+}
+
+model Post {
+  id        Int     @id @default(autoincrement())
+  title     String
+  content   String?
+  subtitle  String?
+  published Boolean @default(false)
+  author    User    @relation(fields: [authorId], references: [id])
+  authorId  Int
+
+  @@map("postagens")
+}
+
+model Profile {
+  id     Int     @id @default(autoincrement())
+  bio    String?
+  user   User    @relation(fields: [userId], references: [id])
+  userId Int     @unique
+
+  @@map("perfis")
+}
+
+```
+
+**3.5.4** Copie a URL de conexão do Vercel para o arquivo .env
+
+Lembre que a sequência da URL é `usuário`:`senha`@`domínio`:5432/verceldb, onde estão representadas abaixo por `????`.
+**Cuidado** para não publicar o arquivo `.env` e tornar público seu login e senha do postgres no vercel.
+
+```diff
+--# Environment variables declared in this file are automatically made available to Prisma.
+--# See the documentation for more detail: https://pris.ly/d/prisma-schema#accessing-environment-variables-from-the-schema
+--
+--# Prisma supports the native connection string format for PostgreSQL, MySQL, SQLite, SQL Server, MongoDB and CockroachDB.
+--# See the documentation for all the connection string options: https://pris.ly/d/connection-strings
+--
+--DATABASE_URL="file:./dev.db"
+++DATABASE_URL="postgres://????:????@????:5432/verceldb"
+
+```
+
+**3.5.5** Publique os modelos/tabelas/dados no postgresql/vercel
+
+```bash
+## cria scripts SQL e gera o cliente de acesso específico para o postgres
+npx prisma migrate dev --name postgres_inicializacao
+
+# executa os códigos ts para inserir dados e consultá-los
+npx ts-node src/script.ts
 ```
