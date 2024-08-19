@@ -205,6 +205,8 @@ npx prisma migrate dev --name adicionado_profile
 
 ### 3.4 Migrate do Prisma ORM - Modifificando nomes de tabelas
 
+[código no branch 04-migrate-tabelas-renomear](https://github.com/infoweb-pos/2024-prisma/tree/04-migrate-tabelas-renomear)
+
 **3.4.1** Modifica o arquivo de configuração/inicialização do prisma `prisma/schema.prisma`
 ```diff
 generator client {
