@@ -26,6 +26,8 @@
 
 ### 3.1. Criar e executar projeto
 
+[código 3.1 - branch main](https://github.com/infoweb-pos/2024-nest/tree/main)
+
 no terminal do sistema operacional, executar o comando
 
 ```bash
@@ -97,6 +99,8 @@ Hello World!
 
 ```
 ### 3.2. Criar endpoints para o CRUD de tarefas
+
+[código 3.2 - branch 01-tarefas-crud](https://github.com/infoweb-pos/2024-nest/tree/01-tarefas-crud)
 
 para criar os recursos para o CRUD de tarefas, execute o comando abaixo em um terminal.
 
