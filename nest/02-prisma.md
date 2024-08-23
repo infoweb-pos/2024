@@ -15,6 +15,7 @@
   - [Building a REST API with NestJS and Prisma Series](https://www.prisma.io/blog/nestjs-prisma-rest-api-7D056s1BmOL0)
   - [Nest - Documentation](https://docs.nestjs.com/)
   - [Prisma - Quick start](https://www.prisma.io/docs/getting-started/quickstart)
+    - [Queries CRUD](https://www.prisma.io/docs/orm/prisma-client/queries/crud)
 - Ferramentas
   - [Nest](https://nestjs.com/)
   - Banco de dados
