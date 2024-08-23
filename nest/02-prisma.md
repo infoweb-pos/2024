@@ -31,6 +31,7 @@
 
 ## 3. Notas de Aula
 
+**código fonte inicial** [zip](https://github.com/infoweb-pos/2024-nest/archive/refs/tags/tarefas-crud-memoria.zip) [branch](https://github.com/infoweb-pos/2024-nest/tree/01-tarefas-crud)
 
 para instalar o [ORM] prisma, executar o comando abaixo no terminal.
 
