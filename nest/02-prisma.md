@@ -31,11 +31,18 @@
 ## 3. Notas de Aula
 
 **sumário**
+
 3.1. Baixar o código inicial e acessar pasta do projeto
+
 3.2. Instalar biblioteca do prisma orm
+
 3.3. Configurar o prisma para usar o SQlite
+
 3.4. Criar o modelo / entidade Tarefa
+
 3.5. Programar para inserir dados iniciais com seed
+
+
 
 ### 3.1. Baixar o código inicial e acessar pasta do projeto
 
