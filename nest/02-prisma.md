@@ -46,7 +46,7 @@
 
 ### 3.1. Baixar o código inicial e acessar pasta do projeto
 
-**código fonte inicial** [zip](https://github.com/infoweb-pos/2024-nest/archive/refs/tags/tarefas-crud-memoria.zip) [branch](https://github.com/infoweb-pos/2024-nest/tree/01-tarefas-crud)
+**código fonte inicial** [zip](https://github.com/infoweb-pos/2024-nest/archive/refs/tags/01-Tarefa-CRUD-Memoria.zip) [branch](https://github.com/infoweb-pos/2024-nest/tree/01-tarefas-crud)
 
 pode baixar o código zip, link acima, e descompactar no computador na sua pasta de preferência.
 ou pode clonar o projeto a partir do repositório e branch remoto, link também acima.
