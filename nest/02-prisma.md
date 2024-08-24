@@ -522,7 +522,7 @@ substituindo a persistência em memória pelo prisma:
 
 ### 3.6.1. Criar o serviço e módulo de persistência
 
-
+FIXME
 ```bash
 npx nest generate module persistencia
 
@@ -554,7 +554,8 @@ git commit -m "adicionado módulo e serviço de persistência"
 
 ### 3.6.2. Adicionar prisma ao serviço de persistência e exportar o serviço para os outros módulos da API
 
-no serviço de tarefas, usar a lib @prisma/client para extender a classe que implementa o serviço
+no serviço de tarefas, arquivo `./src/persistencia/persistencia.service.ts`, usar a lib @prisma/client para extender a classe que implementa o serviço, conforme `diff` abaixo:
+
 ```diff
 import { Injectable } from '@nestjs/common';
 ++import { PrismaClient } from '@prisma/client';
@@ -565,9 +566,154 @@ import { Injectable } from '@nestjs/common';
 
 ```
 
+
+no módulo de tarefas, arquivo `./src/persistencia/persistencia.module.ts` 
+
+```diff
+import { Module } from '@nestjs/common';
+import { PersistenciaService } from './persistencia.service';
+
+@Module({
+  providers: [PersistenciaService],
+  exports: [PersistenciaService],
+})
+export class PersistenciaModule {}
+
+```
+
+**opcional** FIXME
+```bash
+git add src/persistencia/persistencia.module.ts src/persistencia/persistencia.service.ts
+git commit -m "módulo de persistência programado para extender prisma"
+
+```
+
+
+
 ### 3.6.3. Importar módulo de persistência no módulo de tarefas
 
+`./src/tarefas/tarefas.module.ts` FIXME
+```diff
+import { Module } from '@nestjs/common';
+import { TarefasService } from './tarefas.service';
+import { TarefasController } from './tarefas.controller';
+++import { PersistenciaModule } from 'src/persistencia/persistencia.module';
+
+@Module({
+  controllers: [TarefasController],
+  providers: [TarefasService],
+++  imports: [PersistenciaModule],
+})
+export class TarefasModule {}
+
+```
+
+**opcional** FIXME
+```bash
+git add src/tarefas/tarefas.module.ts`
+git commit -m "módulo de persistência importado no módulo de tarefas"
+
+```
+
+
+
 ### 3.6.4. Importar serviço de persistência no serviço de tarefas
+
+`./src/tarefas/tarefas.service.ts` FIXME
+```diff
+import { Injectable } from '@nestjs/common';
+import { CreateTarefaDto } from './dto/create-tarefa.dto';
+import { UpdateTarefaDto } from './dto/update-tarefa.dto';
+import { TarefaEntity } from './entities/tarefa.entity';
+++import { PersistenciaService } from 'src/persistencia/persistencia.service';
+
+@Injectable()
+export class TarefasService {
+  tarefas: TarefaEntity[] = [];
+  contador: number = 0;
+++
+++  constructor(private persistencia: PersistenciaService) {}
+
+  create(createTarefaDto: CreateTarefaDto) {
+    const tarefa = {
+      id: this.contador + 1,
+      ...createTarefaDto,
+    };
+    this.contador += 1;
+    this.tarefas.push(tarefa);
+    return {
+      estado: 'ok',
+      dados: tarefa,
+    };
+  }
+
+  findAll() {
+    return {
+      estado: 'ok',
+      dados: this.tarefas,
+    };
+  }
+
+  findOne(id: number) {
+    const temp = this.tarefas.filter((tarefa) => tarefa.id === id);
+    if (temp[0]) {
+      return {
+        estado: 'ok',
+        dados: temp[0],
+      };
+    } else {
+      return {
+        estado: 'nok',
+        mensagem: `tarefa com #${id} não existe!`,
+      };
+    }
+  }
+
+  update(id: number, updateTarefaDto: UpdateTarefaDto) {
+    const index = this.tarefas.findIndex((tarefa) => tarefa.id === id);
+    if (index >= 0) {
+      this.tarefas[index] = {
+        ...this.tarefas[index],
+        ...updateTarefaDto,
+      };
+      return {
+        estado: 'ok',
+        dados: this.tarefas[index],
+      };
+    }
+    return {
+      estado: 'nok',
+      mensagem: `tarefa com #${id} não existe!`,
+    };
+  }
+
+  remove(id: number) {
+    const index = this.tarefas.findIndex((tarefa) => tarefa.id === id);
+    if (index >= 0) {
+      const tarefasRemovidas = this.tarefas.splice(index, 1);
+      return {
+        estado: 'ok',
+        dados: tarefasRemovidas[0],
+      };
+    } else {
+      return {
+        estado: 'nok',
+        mensagem: `tarefa com #${id} não existe!`,
+      };
+    }
+  }
+}
+
+```
+
+**opcional** FIXME
+```bash
+git add 
+git commit -m "serviço de persistência injetado no serviço de tarefas"
+
+```
+
+FIXME
 
 ### 3.6.5. Usar o serviço de persistência no serviço de tarefas
 
