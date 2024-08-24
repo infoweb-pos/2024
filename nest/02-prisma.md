@@ -53,7 +53,8 @@ ou pode clonar o projeto a partir do repositório e branch remoto, link também 
 
 caso use o repositório remoto, lembre de fazer `checkout` para a `branch` correta, executando o comando `git checkout -b 01-tarefas-crud origin/01-tarefas-crud`.
 
-
+abra o terminal e acesse a pasta onde esta o projeto inicial.
+se preferir, abra o VS Code e abra a pasta do projeto diretamente, e depois abra um terminal no próprio VS Code.
 
 ### 3.2. Instalar biblioteca do prisma orm
 
@@ -310,9 +311,138 @@ edite o arquivo `./package.json` inserindo as linhas conforme o `diff` abaixo:
 ```
 
 após isso, execute o comando `npx prisma db seed` e sua saída deverá ser parecida com o terminal abaixo:
+
 ```console
+Environment variables loaded from .env
+Running seed command `ts-node prisma/seed.ts` ...
+[
+  {
+    id: 1,
+    titulo: 'Criar projeto Nestjs',
+    descricao: null,
+    concluido: true,
+    dataCriacao: 2024-08-24T12:09:49.213Z,
+    dataAtualizacao: 2024-08-24T12:09:49.213Z
+  },
+  {
+    id: 2,
+    titulo: 'Criar endpoints de CRUD para tarefas',
+    descricao: null,
+    concluido: true,
+    dataCriacao: 2024-08-24T12:09:49.213Z,
+    dataAtualizacao: 2024-08-24T12:09:49.213Z
+  },
+  {
+    id: 3,
+    titulo: 'Adicionar mecanismo de persistência',
+    descricao: 'prisma orm https://www.prisma.io/docs/',
+    concluido: false,
+    dataCriacao: 2024-08-24T12:09:49.213Z,
+    dataAtualizacao: 2024-08-24T12:09:49.213Z
+  }
+]
+
+🌱  The seed command has been executed.
 
 ```
+
+execute novamente `npx prisma db seed` e veja com `npx prisma studio` que os dados foram duplicados.
+para evitar isso, vamos inserir o código no início para apagar todos os dados antes de inserir novos, conforme diff abaixo:
+```diff
+import { PrismaClient } from '@prisma/client';
+
+const prisma = new PrismaClient();
+
+const seed = async () => {
+++  await prisma.tarefa.deleteMany({});
+++
+  const tarefas = await prisma.tarefa.createManyAndReturn({
+    data: [
+      {
+        titulo: 'Criar projeto Nestjs',
+        concluido: true,
+      },
+      {
+        titulo: 'Criar endpoints de CRUD para tarefas',
+        concluido: true,
+      },
+      {
+        titulo: 'Adicionar mecanismo de persistência',
+        descricao: 'prisma orm https://www.prisma.io/docs/',
+      },
+    ],
+  });
+
+  console.log(tarefas);
+};
+
+seed()
+  .catch((e) => {
+    console.error(e);
+    process.exit(1);
+  })
+  .finally(async () => {
+    // close Prisma Client at the end
+    await prisma.$disconnect();
+  });
+
+```
+
+agora execute novamente `npx prisma db seed` e veja o resultado no navegador do prisma studio.
+dica, se for consultar sempre o prisma studio, abra um novo terminal e deixe executando `npx prisma studio`.
+
+por úlitmo na inserção de dados, será inserido uma tarefa individualmente para podermos ter os dados completos desta tarefa, como o _id_.
+lembre de executar novamente `npx prisma db seed` e conferir o resultado em prisma studio.
+```diff
+import { PrismaClient } from '@prisma/client';
+
+const prisma = new PrismaClient();
+
+const seed = async () => {
+  await prisma.tarefa.deleteMany({});
+
+++  const tarefa = await prisma.tarefa.create({
+++    data: {
+++      titulo: 'Adicionar autenticação por email e senha na API',
+++    },
+++  });
+++  console.log(tarefa);
+++
+  const tarefas = await prisma.tarefa.createManyAndReturn({
+    data: [
+      {
+        titulo: 'Criar projeto Nestjs',
+        concluido: true,
+      },
+      {
+        titulo: 'Criar endpoints de CRUD para tarefas',
+        concluido: true,
+      },
+      {
+        titulo: 'Adicionar mecanismo de persistência',
+        descricao: 'prisma orm https://www.prisma.io/docs/',
+      },
+    ],
+  });
+
+  console.log(tarefas);
+};
+
+seed()
+  .catch((e) => {
+    console.error(e);
+    process.exit(1);
+  })
+  .finally(async () => {
+    // close Prisma Client at the end
+    await prisma.$disconnect();
+  });
+
+```
+
+### 3.6. Criar o módulo de persistência da API
+
+continua . . .
 
 substituindo a persistência em memória pelo prisma:
 1. Criar o serviço de persistência
