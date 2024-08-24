@@ -9,8 +9,6 @@
 
 ## 2. Links
 
-- Repositório de códido da aula
-  - [2024-nest](https://github.com/infoweb-pos/2024-nest)
 - Tutoriais
   - [Building a REST API with NestJS and Prisma Series](https://www.prisma.io/blog/nestjs-prisma-rest-api-7D056s1BmOL0)
   - [Nest - Documentation](https://docs.nestjs.com/)
@@ -32,7 +30,25 @@
 
 ## 3. Notas de Aula
 
+**sumário**
+3.1. Baixar o código inicial e acessar pasta do projeto
+3.2. Instalar biblioteca do prisma orm
+3.3. Configurar o prisma para usar o SQlite
+3.4. Criar o modelo / entidade Tarefa
+3.5. Programar para inserir dados iniciais com seed
+
+### 3.1. Baixar o código inicial e acessar pasta do projeto
+
 **código fonte inicial** [zip](https://github.com/infoweb-pos/2024-nest/archive/refs/tags/tarefas-crud-memoria.zip) [branch](https://github.com/infoweb-pos/2024-nest/tree/01-tarefas-crud)
+
+pode baixar o código zip, link acima, e descompactar no computador na sua pasta de preferência.
+ou pode clonar o projeto a partir do repositório e branch remoto, link também acima.
+
+caso use o repositório remoto, lembre de fazer `checkout` para a `branch` correta, executando o comando `git checkout -b 01-tarefas-crud origin/01-tarefas-crud`.
+
+
+
+### 3.2. Instalar biblioteca do prisma orm
 
 para instalar o [ORM] prisma, executar o comando abaixo no terminal.
 
@@ -48,6 +64,10 @@ git add package.json
 git commit -m "adicionado lib prisma ao projeto"
 
 ```
+
+
+
+### 3.3. Configurar o prisma para usar o SQlite
 
 configurar o prisma e sqlite para o projeto, executar o comando abaixo.
 
@@ -85,6 +105,9 @@ git add prisma
 git commit -m "configurado o prisma para sqlite"
 
 ```
+
+
+### 3.4. Criar o modelo / entidade Tarefa
 
 edite o arquivo `./prisma/prisma.schema` para inserir o modelo/entidade `tarefa`.
 
@@ -153,6 +176,10 @@ para criar dados iniciais com o comando `db seed`, é preciso:
 1. criar um arquivo typescript com os dados iniciais;
 2. configurar o `package.json` com um campos `prisma.seed`;
 3. executar o comando `npx prisma db seed`.
+
+
+
+### 3.5. Programar para inserir dados iniciais com seed
 
 crie o arquivo typescript `./prisma/seed.ts` e modifique conforme abaixo:
 
@@ -286,4 +313,4 @@ substituindo a persistência em memória pelo prisma:
 3. Importar o serviço de persistência no módulo de tarefas
 4. Usar o serviço de persistência no serviço de tarefas
 
-continua...
+
