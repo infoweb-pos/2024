@@ -56,6 +56,12 @@ caso use o repositório remoto, lembre de fazer `checkout` para a `branch` corre
 abra o terminal e acesse a pasta onde esta o projeto inicial.
 se preferir, abra o VS Code e abra a pasta do projeto diretamente, e depois abra um terminal no próprio VS Code.
 
+**opcional** usar git e `branch` para registrar as modificações.
+```bash
+git checkout -b 02-tarefas-crud-prisma
+
+```
+
 ### 3.2. Instalar biblioteca do prisma orm
 
 para instalar o [ORM] prisma, executar o comando abaixo no terminal.
@@ -65,7 +71,7 @@ npm i -D prisma
 
 ```
 
-opcionalmente se estiver usando um repositório, guardar a modificação no arquivo de configuração do projeto.
+**opcional** usando um repositório, guardar a modificação no arquivo de configuração do projeto.
 
 ```bash
 git add package.json
@@ -106,13 +112,14 @@ entendendo a executação do comando, o prisma cria 2 (dois) arquivos:
 - `./.env` - arquivo exemplo com variáveis de ambiente que são recuperados na execução, e 
 - `./prisma/schema.prisma` - arquivo com configuração inicial padrão pronta para colocar os modelos/entidades necessárias a API.
 
-opcionalmente se estiver usando um repositório, guardar a modificação no arquivo de configuração do prisma.
+**opcional** usando um repositório, guardar a modificação no arquivo de configuração do prisma.
 
 ```bash
 git add prisma
 git commit -m "configurado o prisma para sqlite"
 
 ```
+
 
 
 ### 3.4. Criar o modelo / entidade Tarefa
@@ -184,6 +191,14 @@ para criar dados iniciais com o comando `db seed`, é preciso:
 1. criar um arquivo typescript com os dados iniciais;
 2. configurar o `package.json` com um campos `prisma.seed`;
 3. executar o comando `npx prisma db seed`.
+
+**opcional** usando um repositório, guardar a modificação no arquivo de configuração do projeto.
+
+```bash
+git add package.json prisma/schema.prisma prisma/migrations
+git commit -m "criado o SQL e a lib cliente de acesso ao db"
+
+```
 
 
 
@@ -440,14 +455,121 @@ seed()
 
 ```
 
+o último comando executado deverá apresentar a saída no terminal conforme abaixo:
+```console
+npx prisma db seed
+Environment variables loaded from .env
+Running seed command `ts-node prisma/seed.ts` ...
+{
+  id: 1,
+  titulo: 'Adicionar autenticação por email e senha na API',
+  descricao: null,
+  concluido: false,
+  dataCriacao: 2024-08-24T15:54:21.633Z,
+  dataAtualizacao: 2024-08-24T15:54:21.633Z
+}
+[
+  {
+    id: 2,
+    titulo: 'Criar projeto Nestjs',
+    descricao: null,
+    concluido: true,
+    dataCriacao: 2024-08-24T15:54:21.654Z,
+    dataAtualizacao: 2024-08-24T15:54:21.654Z
+  },
+  {
+    id: 3,
+    titulo: 'Criar endpoints de CRUD para tarefas',
+    descricao: null,
+    concluido: true,
+    dataCriacao: 2024-08-24T15:54:21.654Z,
+    dataAtualizacao: 2024-08-24T15:54:21.654Z
+  },
+  {
+    id: 4,
+    titulo: 'Adicionar mecanismo de persistência',
+    descricao: 'prisma orm https://www.prisma.io/docs/',
+    concluido: false,
+    dataCriacao: 2024-08-24T15:54:21.654Z,
+    dataAtualizacao: 2024-08-24T15:54:21.654Z
+  }
+]
+
+🌱  The seed command has been executed.
+
+```
+
+**opcional** usando um repositório, guardar a modificação no arquivo de configuração do prisma.
+
+```bash
+git add package.json prisma/seed.ts
+git commit -m "criado script para inserção de dados iniciais"
+
+```
+
+
+
 ### 3.6. Criar o módulo de persistência da API
 
-continua . . .
-
 substituindo a persistência em memória pelo prisma:
-1. Criar o serviço de persistência
-2. Criar métodos de acesso aos dados no serviço de persistência
-3. Importar o serviço de persistência no módulo de tarefas
-4. Usar o serviço de persistência no serviço de tarefas
+1. Criar o serviço e módulo de persistência
+2. Adicionar prisma ao serviço de persistência e exportar o serviço para os outros módulos da API
+3. Importar módulo de persistência no módulo de tarefas
+4. Importar serviço de persistência no serviço de tarefas
+5. Usar o serviço de persistência no serviço de tarefas
 
+
+
+### 3.6.1. Criar o serviço e módulo de persistência
+
+
+```bash
+npx nest generate module persistencia
+
+```
+
+```console
+CREATE src/persistencia/persistencia.module.ts (89 bytes)
+UPDATE src/app.module.ts (413 bytes)
+
+```
+
+```bash
+npx nest generate service persistencia --no-spec
+
+```
+
+```console
+CREATE src/persistencia/persistencia.service.ts (96 bytes)
+UPDATE src/persistencia/persistencia.module.ts (187 bytes)
+(node:288385) [DEP0051] DeprecationWarning
+
+```
+
+```bash
+git add src/app.module.ts src/persistencia
+git commit -m "adicionado módulo e serviço de persistência"
+
+```
+
+### 3.6.2. Adicionar prisma ao serviço de persistência e exportar o serviço para os outros módulos da API
+
+no serviço de tarefas, usar a lib @prisma/client para extender a classe que implementa o serviço
+```diff
+import { Injectable } from '@nestjs/common';
+++import { PrismaClient } from '@prisma/client';
+
+@Injectable()
+--export class PersistenciaService {}
+++export class PersistenciaService extends PrismaClient {}
+
+```
+
+### 3.6.3. Importar módulo de persistência no módulo de tarefas
+
+### 3.6.4. Importar serviço de persistência no serviço de tarefas
+
+### 3.6.5. Usar o serviço de persistência no serviço de tarefas
+
+continua . . .
 
