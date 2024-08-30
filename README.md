@@ -40,6 +40,7 @@
 | 16/08 | [Introdução ao prisma orm](./prisma/01-prisma-intro.md) |
 | 20/08 | [Introdução ao prisma orm](./prisma/01-prisma-intro.md) |
 | 23/08 | [Nest - incluindo persistência](./nest/02-prisma.md) |
-| 26/08 | [Nest - Autenticação e autorização](./nest/03-autenticacao.md) |
-| 30/08 | Nest - Documentando API |
-| 02/09 | Nest - Enviando e recebendo arquivo imagem |
+| 26/08 | Autenticação [Nest - Autenticação e autorização](./nest/03-autenticacao.md) |
+| 30/08 | Autorização [Nest - Autenticação e autorização](./nest/03-autenticacao.md) |
+| 02/09 | Nest - Documentando API |
+| 06/09 | Nest - Enviando e recebendo arquivo imagem |
