@@ -19,6 +19,8 @@
 
 ## 3. Notas de aula
 
+[zip](https://github.com/infoweb-pos/2024-nest/archive/refs/tags/03-autenticacao-e-autorizacao.zip) [github branch 03-autenticacao](https://github.com/infoweb-pos/2024-nest/tree/03-autenticacao) [github main](https://github.com/infoweb-pos/2024-nest/)
+
 ```bash
 npm install --save @nestjs/swagger
 
