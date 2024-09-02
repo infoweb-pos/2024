@@ -1,9 +1,9 @@
-# Nest - 2024 - Incluindo persistência no CRUD
+# Nest - 2024 - Documentando uma API com OpenAPI/Swagger
 
 
 
 ## 1. Objetivo
-1. Incluir mecanismo de persistência na API
+1. Incluir documentação dos enpoint na API
 
 
 
