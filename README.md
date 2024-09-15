@@ -45,4 +45,5 @@
 | 02/09 | [Nest - Documentando API](./nest/04-swagger.md) |
 | 06/09 | [Nest - Enviando e recebendo arquivo imagem](./nest/05-upload-arquivos.md) |
 | 09/09 | WTADS / WInfo |
-| 06/09 | [Nest - Enviando e recebendo arquivo imagem](https://dev.to/leonardominora/nest-upload-de-arquivo-5g1) |
+| 13/09 | [Nest - Enviando 1 arquivo](https://dev.to/leonardominora/nest-upload-de-arquivo-5g1) |
+| 16/09 | [Nest - enviando múltiplos arquivos](https://dev.to/leonardominora/nestjs-upload-e-armazenamento-local-de-arquivo-3gbn) |
