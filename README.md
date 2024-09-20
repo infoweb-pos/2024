@@ -46,4 +46,6 @@
 | 06/09 | [Nest - Enviando e recebendo arquivo imagem](./nest/05-upload-arquivos.md) |
 | 09/09 | WTADS / WInfo |
 | 13/09 | [Nest - Enviando 1 arquivo](https://dev.to/leonardominora/nest-upload-de-arquivo-5g1) |
-| 16/09 | [Nest - enviando múltiplos arquivos](https://dev.to/leonardominora/nestjs-upload-e-armazenamento-local-de-arquivo-3gbn) |
+| 16/09 | [Nest - enviando múltiplos arquivos](https://dev.to/leonardominora/nestjs-upload-e-armazenamento-local-de-arquivo-3gbn) <br/> [Nest - armazenando em disco local](https://dev.to/leonardominora/nest-armazenamento-local-de-upload-7ne) |
+| 20/09 | [Nest - Armazenando na nuvem](https://dev.to/leonardominora/nest-armazenamento-nas-nuvens-561j) <br />[Nest - validação dos arquivos enviados](https://dev.to/leonardominora/nestjs-validando-o-envio-de-arquivos-59d5) |
+
