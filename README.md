@@ -29,7 +29,7 @@
 | 13/07 | (sábado) Doente |
 | 15/07 | Doente |
 | 16/07 | Doente |
-| 22/07 | OBT 2024 |
+| 22/07 | **2o bimestre**<br />OBT 2024 |
 | 23/07 | OBT 2024 |
 | 27/07 | (sábado) OBT 2024 |
 | 29/07 | [Revisão de React](https://github.com/infoweb-pos/tictactoy-2024/tree/master) |
@@ -47,5 +47,30 @@
 | 09/09 | WTADS / WInfo |
 | 13/09 | [Nest - Enviando 1 arquivo](https://dev.to/leonardominora/nest-upload-de-arquivo-5g1) |
 | 16/09 | [Nest - enviando múltiplos arquivos](https://dev.to/leonardominora/nestjs-upload-e-armazenamento-local-de-arquivo-3gbn) <br/> [Nest - armazenando em disco local](https://dev.to/leonardominora/nest-armazenamento-local-de-upload-7ne) |
-| 20/09 | [Nest - Armazenando na nuvem](https://dev.to/leonardominora/nest-armazenamento-nas-nuvens-561j) <br />[Nest - validação dos arquivos enviados](https://dev.to/leonardominora/nestjs-validando-o-envio-de-arquivos-59d5) |
+| 20/09 | final de semestre |
+| 11/10 | **3o bimestre**<br />[Nest - Armazenando na nuvem](https://dev.to/leonardominora/nest-armazenamento-nas-nuvens-561j) <br />[Nest - validação dos arquivos enviados](https://dev.to/leonardominora/nestjs-validando-o-envio-de-arquivos-59d5) |
+| 14/10 | --- |
+| 18/10 | --- |
+| 21/10 | --- |
+| 25/10 | --- |
+| 26/10 | (sábado)<br />--- |
+| 01/11 | --- |
+| 04/11 | --- |
+| 08/11 | --- |
+| 09/10 | (sábado)<br />--- |
+| 11/11 | --- |
+| 18/11 | --- |
+| 22/11 | --- |
+| 25/11 | --- |
+| 29/11 | --- |
+| 02/12 | --- |
+| 06/12 | --- |
+| 09/12 | --- |
+| 13/12 | --- |
+| 16/12 | **4o bimestre**<br />--- |
+| 20/12 | --- |
+| 23/12/24 a 10/01/25 | recesso de final de ano |
+| 13/01 | fechamento de semestre letivo |
+| 17/01 | fechamento de semestre letivo |
+
 
