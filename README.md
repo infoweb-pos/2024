@@ -49,7 +49,7 @@
 | 16/09 | [Nest - enviando múltiplos arquivos](https://dev.to/leonardominora/nestjs-upload-e-armazenamento-local-de-arquivo-3gbn) <br/> [Nest - armazenando em disco local](https://dev.to/leonardominora/nest-armazenamento-local-de-upload-7ne) |
 | 20/09 | final de semestre |
 | 11/10 | **3o bimestre**<br />[Nest - Armazenando na nuvem](https://dev.to/leonardominora/nest-armazenamento-nas-nuvens-561j) <br />[Nest - validação dos arquivos enviados](https://dev.to/leonardominora/nestjs-validando-o-envio-de-arquivos-59d5) |
-| 14/10 | --- |
+| 14/10 | [Best 19 React UI Component Libraries of 2024](https://prismic.io/blog/react-component-libraries) |
 | 18/10 | --- |
 | 21/10 | --- |
 | 25/10 | --- |
@@ -58,7 +58,7 @@
 | 04/11 | --- |
 | 08/11 | --- |
 | 09/10 | (sábado)<br />--- |
-| 11/11 | --- |
+| 11/11 | --- |https://prismic.io/blog/react-component-libraries
 | 18/11 | --- |
 | 22/11 | --- |
 | 25/11 | --- |
