@@ -54,7 +54,7 @@
 | 21/10 | Apresentação de Paulo Meireles |
 | 25/10 | TRE |
 | 26/10 | (sábado)<br />projeto |
-| 01/11 | React - blibiotecas de componentes |
+| 01/11 | [React - blibiotecas de componentes](https://github.com/infoweb-pos/2024-react-ui-libs) |
 | 04/11 | --- |
 | 08/11 | --- |
 | 09/10 | (sábado)<br />--- |
