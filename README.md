@@ -55,10 +55,10 @@
 | 25/10 | TRE |
 | 26/10 | (sábado)<br />projeto |
 | 01/11 | [React - blibiotecas de componentes](https://github.com/infoweb-pos/2024-react-ui-libs) |
-| 04/11 | --- |
-| 08/11 | --- |
-| 09/10 | (sábado)<br />--- |
-| 11/11 | --- |https://prismic.io/blog/react-component-libraries
+| 04/11 | [React - blibiotecas de componentes](https://github.com/infoweb-pos/2024-react-ui-libs) |
+| 08/11 | [React - blibiotecas de componentes](https://github.com/infoweb-pos/2024-react-ui-libs) |
+| 09/10 | (sábado)<br />[React - blibiotecas de componentes](https://github.com/infoweb-pos/2024-react-ui-libs) |
+| 11/11 | [react native - introdução](https://reactnative.dev/) |
 | 18/11 | --- |
 | 22/11 | --- |
 | 25/11 | --- |
