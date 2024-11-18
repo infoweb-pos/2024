@@ -7,8 +7,8 @@
 
 ## Calendário
 
-| Data | Nota |
-| --- | --- |
+| Data  | Nota |
+| ----- | --- |
 | 19/02 | Sem aula presencial. Reposição será material de apoio. |
 | 20/02 | Sem aula presencial. Reposição será material de apoio. |
 | 26/02 | Apresentação da disciplina |
@@ -58,8 +58,8 @@
 | 04/11 | [React - blibiotecas de componentes](https://github.com/infoweb-pos/2024-react-ui-libs) |
 | 08/11 | [React - blibiotecas de componentes](https://github.com/infoweb-pos/2024-react-ui-libs) |
 | 09/10 | (sábado)<br />[React - blibiotecas de componentes](https://github.com/infoweb-pos/2024-react-ui-libs) |
-| 11/11 | [react native - introdução](https://reactnative.dev/) |
-| 18/11 | --- |
+| 11/11 | [react native](./react-native/) |
+| 18/11 | [react native](./react-native/) |
 | 22/11 | --- |
 | 25/11 | --- |
 | 29/11 | --- |
