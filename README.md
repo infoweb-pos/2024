@@ -70,7 +70,7 @@
 | 16/12 | **4o bimestre**<br />entrega de resultado |
 | 20/12 | --- |
 | 23/12/24 a 10/01/25 | recesso de final de ano |
-| 13/01 | fechamento de semestre letivo |
-| 17/01 | fechamento de semestre letivo |
+| 13/01 | **apresentação do projeto** |
+| 17/01 | **apresentação do projeto** |
 
 
