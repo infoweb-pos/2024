@@ -60,14 +60,14 @@
 | 09/10 | (sábado)<br />[React - blibiotecas de componentes](https://github.com/infoweb-pos/2024-react-ui-libs) |
 | 11/11 | [react native](./react-native/) |
 | 18/11 | [react native](./react-native/) |
-| 22/11 | --- |
-| 25/11 | --- |
-| 29/11 | --- |
-| 02/12 | --- |
-| 06/12 | --- |
-| 09/12 | --- |
-| 13/12 | --- |
-| 16/12 | **4o bimestre**<br />--- |
+| 22/11 | [react native](./react-native/) |
+| 25/11 | egresso de infoweb apresentando jogos eletrônicos |
+| 29/11 | prática com RN, página de login e chat, com fork do repositório [github 2024-react_native](https://github.com/infoweb-pos/2024-react_native/) |
+| 02/12 | prática com RN, página de login e chat, com fork do repositório [github 2024-react_native](https://github.com/infoweb-pos/2024-react_native/) |
+| 06/12 | websocket |
+| 09/12 | prática com websocket |
+| 13/12 | prática com websocket |
+| 16/12 | **4o bimestre**<br />entrega de resultado |
 | 20/12 | --- |
 | 23/12/24 a 10/01/25 | recesso de final de ano |
 | 13/01 | fechamento de semestre letivo |
